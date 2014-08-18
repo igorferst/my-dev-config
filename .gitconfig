@@ -1,0 +1,13 @@
+[user]
+	name = Guy Incognito
+	email = guy@incognito.com
+[core]
+	editor = vim
+	excludesfile = /Users/guyincognito/.gitignore
+[branch]
+	autosetuprebase = always
+[alias]
+	co = checkout
+	br = branch
+[push]
+	default = simple

@@ -1,0 +1,66 @@
+
+### Committing ###
+
+function ad {
+  git add $@
+}
+
+alias ada='git add --all :/'
+
+function cm {
+  git commit --message="$@"
+}
+
+function cma {
+  git commit -a --message="$@"
+}
+
+alias cmaa='git commit -a --amend --no-edit'
+
+function cpk {
+  git cherry-pick $@
+}
+
+alias blowaway='git reset --hard'
+
+
+### Diffs ###
+
+alias dff='git diff'
+
+# Diff recent
+alias dfr='git diff HEAD~1 HEAD'
+
+# Diff cached
+alias dfc='git diff --cached'
+
+# Files with pending changes, diffed against remote master
+alias pnm='git diff --name-only origin/master HEAD'
+
+# Diff of pending changes against remote master
+alias pndm='git diff origin/master HEAD'
+
+
+### Info ###
+
+alias st='git status'
+
+# A pretty, terse log
+alias lg='git log --date=short --format="%C(yellow)%h%Creset %Cblue%cd %Creset%s %Cblue(%cn)"'
+
+
+### Branch operations ###
+
+function push {
+  git push $@
+}
+
+function pull {
+  git pull $@
+}
+
+function merge {
+  git merge $@
+}
+
+alias prune='git remote prune origin'
