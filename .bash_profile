@@ -1,9 +1,5 @@
 
-# Modify bash prompt to show `user@machine:directory`
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-
-
-### Helpful functions/aliases ###
+#### Helpful functions/aliases ####
 
 # List files as pretty, verbose single file
 alias ll='ls -AlFGh'
@@ -24,14 +20,47 @@ function mkcd {
   fi
 }
 
+source ~/.docker_aliases
 
-### git ###
+source ~/.git_aliases
 
-if [ -f ~/.git_aliases ]; then
-    . ~/.git_aliases
+################################
+
+#### ssh-agent ####
+# http://mah.everybody.org/docs/ssh
+
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+  echo "Initialising new SSH agent..."
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+  echo succeeded
+  chmod 600 "${SSH_ENV}"
+  . "${SSH_ENV}" > /dev/null
+  /usr/bin/ssh-add;
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+  . "${SSH_ENV}" > /dev/null
+  #ps ${SSH_AGENT_PID} doesn't work under cywgin
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    start_agent;
+  }
+else
+  start_agent;
 fi
 
+################################
+
+# Modify bash prompt to show `user@machine:directory (git branch)`
+source ~/.git-prompt.sh
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[35m\]\$(__git_ps1)\[\033[m\]\$ "
+
+# Git completion
 # http://git-scm.com/book/en/Git-Basics-Tips-and-Tricks#Auto-Completion
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+source ~/.git-completion.bash
+
+# Add /usr/local/... to path
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"

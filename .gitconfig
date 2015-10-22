@@ -1,13 +1,15 @@
 [user]
-	name = Guy Incognito
-	email = guy@incognito.com
+  name = Guy Incognito
+  email = guy@incognito.com
 [core]
-	editor = vim
-	excludesfile = /Users/guyincognito/.gitignore
+  editor = vim
+  excludesfile = /Users/guyincognito/.gitignore
+  whitespace = tab-in-indent,trailing-space
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [alias]
-	co = checkout
-	br = branch
+  co = checkout
+  br = branch
+  sq = merge --squash
 [push]
-	default = simple
+  default = simple

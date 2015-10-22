@@ -1,0 +1,14 @@
+alias dm.init='eval "$(docker-machine env dev)"'
+alias dm.start='docker-machine start dev'
+alias dm.stop='docker-machine stop dev'
+alias dm.restart='docker-machine restart dev'
+
+alias dc.b='docker-compose build'
+alias dc.u='docker-compose up'
+alias dc.ps='docker-compose ps'
+
+alias d.nuke='docker stop $(docker ps -a -q) && docker rm --volumes=true $(docker ps -a -q)'
+
+function d.bash {
+  docker exec -it $1_$2_1 /bin/bash
+}

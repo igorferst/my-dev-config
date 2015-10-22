@@ -1,10 +1,7 @@
 
 ### Committing ###
 
-function ad {
-  git add $@
-}
-
+alias ad='git add'
 alias ada='git add --all :/'
 
 function cm {
@@ -17,33 +14,28 @@ function cma {
 
 alias cmaa='git commit -a --amend --no-edit'
 
-function cpk {
-  git cherry-pick $@
-}
-
-alias blowaway='git reset --hard'
-
 
 ### Diffs ###
 
-alias dff='git diff'
+alias dff='clear; git diff'
 
 # Diff recent
-alias dfr='git diff HEAD~1 HEAD'
+alias dfr='clear; git diff HEAD~1 HEAD'
 
 # Diff cached
-alias dfc='git diff --cached'
+alias dfc='clear; git diff --cached'
 
 # Files with pending changes, diffed against remote master
-alias pnm='git diff --name-only origin/master HEAD'
+alias pnm='clear; git diff --name-only origin/master HEAD'
 
 # Diff of pending changes against remote master
-alias pndm='git diff origin/master HEAD'
+alias pndm='clear; git diff origin/master HEAD'
 
 
 ### Info ###
 
 alias st='git status'
+alias br='git branch'
 
 # A pretty, terse log
 alias lg='git log --date=short --format="%C(yellow)%h%Creset %Cblue%cd %Creset%s %Cblue(%cn)"'
@@ -62,5 +54,11 @@ function pull {
 function merge {
   git merge $@
 }
+
+function cpk {
+  git cherry-pick $@
+}
+
+alias blowaway='git reset --hard'
 
 alias prune='git remote prune origin'
