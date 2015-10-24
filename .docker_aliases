@@ -1,3 +1,5 @@
+# These docker-machine aliases assume that you used docker-machine
+# to create a Docker host VM called `dev`
 alias dm.init='eval "$(docker-machine env dev)"'
 alias dm.start='docker-machine start dev'
 alias dm.stop='docker-machine stop dev'
