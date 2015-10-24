@@ -21,6 +21,8 @@ function mkcd {
 }
 
 source ~/.docker_aliases
+# Go ahead and engage Docker
+dm.init
 
 source ~/.git_aliases
 
