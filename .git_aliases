@@ -1,7 +1,7 @@
-
 ### Committing ###
 
 alias ad='git add'
+
 alias ada='git add --all :/'
 
 function cm {
@@ -14,51 +14,61 @@ function cma {
 
 alias cmaa='git commit -a --amend --no-edit'
 
-
 ### Diffs ###
 
 alias dff='clear; git diff'
 
 # Diff recent
+
 alias dfr='clear; git diff HEAD~1 HEAD'
 
 # Diff cached
+
 alias dfc='clear; git diff --cached'
 
 # Files with pending changes, diffed against remote master
+
 alias pnm='clear; git diff --name-only origin/master HEAD'
 
 # Diff of pending changes against remote master
-alias pndm='clear; git diff origin/master HEAD'
 
+alias pndm='clear; git diff origin/master HEAD'
 
 ### Info ###
 
 alias st='git status'
+
 alias br='git branch'
 
 # A pretty, terse log
-alias lg='git log --date=short --format="%C(yellow)%h%Creset %Cblue%cd %Creset%s %Cblue(%cn)"'
 
+alias lg='git log --date=short --format="%C(yellow)%h%Creset %C(white)%cd %Creset%s %C(white)(%cn)"'
 
 ### Branch operations ###
 
 function push {
-  git push $@
+  BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
+  REMOTE_NAME=`git rev-parse --abbrev-ref @{u}` > /dev/null 2>&1 
+  if test -z "$REMOTE_NAME"
+  then
+    git push --set-upstream origin $BRANCH_NAME
+  else
+    git push $@
+  fi
 }
 
 function pull {
   git pull $@
 }
 
-function merge {
-  git merge $@
-}
-
 function cpk {
   git cherry-pick $@
 }
 
+### Other ###
+
 alias blowaway='git reset --hard'
 
 alias prune='git remote prune origin'
+
+alias tidyup='git branch | grep -v "master" | xargs git branch -D'
