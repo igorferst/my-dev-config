@@ -1,6 +1,5 @@
 plugins=(git ssh-agent)
 autoload -Uz compinit && compinit
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Customize prompt
 PROMPT='%F{white}%2~%f %# '
@@ -18,10 +17,6 @@ zstyle ':vcs_info:*' enable git
 source ~/.helpful_aliases
 source ~/.git_aliases
 source ~/.docker_aliases
-
-# z
-_Z_CMD='q'
-. `brew --prefix`/etc/profile.d/z.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
