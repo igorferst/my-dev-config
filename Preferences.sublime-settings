@@ -1,0 +1,21 @@
+{
+	"auto_complete_commit_on_tab": false,
+	"color_scheme": "Packages/ayu/ayu-mirage.sublime-color-scheme",
+	"default_line_ending": "unix",
+	"font_size": 18,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"remember_full_screen": true,
+	"rulers":
+	[
+		100
+	],
+	"shift_tab_unindent": true,
+	"theme": "ayu-mirage.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false,
+}
+
