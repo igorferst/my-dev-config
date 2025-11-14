@@ -13,3 +13,4 @@
   sq = merge --squash
 [push]
   default = simple
+  autosetupremote = true
