@@ -5,4 +5,3 @@ How to use:
 1. Install homebrew.
 2. Copy repo files to home dir.
 3. Modify details in `.gitconfig`.
-4. Save Github key to `~/.ssh/id_gh`.
